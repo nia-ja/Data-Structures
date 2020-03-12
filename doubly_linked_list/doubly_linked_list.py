@@ -196,19 +196,19 @@ class DoublyLinkedList:
         return max_
 
 
-our_dll = DoublyLinkedList()
-print(our_dll)
-our_dll.add_to_head(5)
-our_dll.add_to_head(3)
-our_dll.add_to_head(7)
-our_dll.add_to_head(8)
-our_dll.add_to_tail(1)
+# our_dll = DoublyLinkedList()
+# print(our_dll)
+# our_dll.add_to_head(5)
+# our_dll.add_to_head(3)
+# our_dll.add_to_head(7)
+# our_dll.add_to_head(8)
+# our_dll.add_to_tail(1)
 
-print(our_dll)
+# print(our_dll)
 
-removed_val = our_dll.remove_from_head()
-print(removed_val)
-print(our_dll)
-removed_val = our_dll.remove_from_tail()
-print(removed_val)
-print(our_dll)
+# removed_val = our_dll.remove_from_head()
+# print(removed_val)
+# print(our_dll)
+# removed_val = our_dll.remove_from_tail()
+# print(removed_val)
+# print(our_dll)
