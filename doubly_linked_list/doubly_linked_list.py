@@ -147,9 +147,12 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
         val = node.value
+        # check if the node is a tail 
         if self.tail is node:
+            # reasign the tail to the prev value
             self.tail = self.tail.prev
             self.tail.next = None
+        # delete node
         node.delete()
         self.length -= 1
         self.add_to_head(val)
@@ -158,9 +161,12 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
         val = node.value
+        # check if the node is a head 
         if self.head is node:
+            # reasign the head to the next value
             self.head = self.head.next
             self.head.prev = None
+        # delete node
         node.delete()
         self.length -= 1
         self.add_to_tail(val)
@@ -168,29 +174,42 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
+        # check if the node is a head 
         if self.head is node:
+            # check if there's another value in a list
             if self.head.next:
+                # reasign the head
                 self.head = self.head.next
                 self.head.prev = None
             else:
                 self.head = None
+        # check if the node is a tail 
         if self.tail is node:
+            # check if there's another value in a list
             if self.tail.prev:
+                # reasign the tail
                 self.tail = self.tail.prev
                 self.tail.next = None
             else:
                 self.tail = None
+        # delete the node
         node.delete()
         self.length -= 1
         
     """Returns the highest value currently in the list"""
     def get_max(self):
+        # if there's no head the doubly list is empty
         if not self.head:
             return -1
+        # first value is the max value
         max_ = self.head.value
+        # curr is the head (we'll go from head to tail)
         curr = self.head
+        # while there's a next value go
         while curr.next:
+            # reasign the curr value 
             curr = curr.next
+            # reasign the max value in case if current value is bigger then currently stored max value
             if curr.value > max_:
                 max_ = curr.value
         return max_
