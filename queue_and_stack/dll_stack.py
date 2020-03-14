@@ -2,6 +2,8 @@ import sys
 sys.path.append('./doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
+# FIRST in (add to the head) -> LAST out (remove from the head)
+# stack of pancakes
 class Stack:
     def __init__(self):
         self.size = 0
@@ -21,7 +23,7 @@ class Stack:
             return None
         else:
             self.size -= 1
-            # first out
+            # last out
             return self.storage.remove_from_head()
 
     def len(self):

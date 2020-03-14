@@ -2,6 +2,8 @@ import sys
 sys.path.append('./doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
+# FIRST in (add to the head) -> FIRST out (remove from the tail)
+# waiting in line
 class Queue:
     def __init__(self):
         self.size = 0
