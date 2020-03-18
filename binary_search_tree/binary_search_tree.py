@@ -1,22 +1,61 @@
 import sys
-sys.path.append('../queue_and_stack')
+sys.path.append('./queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
 
 
+# Tree Node
 class BinarySearchTree:
     def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+        self.value = value # value of current node
+        self.left = None # Binary Search Tree (left -> smaller)
+        self.right = None # Binary Search Tree (right -> bigger)
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # compare value to the current node
+        # if smaller, go left
+        # if bigger, go right
+        # repeat, if neccessary -> recursion?
+
+        # if no node to go to, (either left or right) (i.e, left or right is None) -> base case
+        # make the new node at that spot
+
+        ## if no node.left AND value is less than node.value OR no node.right and value greater than node.value
+
+        #current node has no value
+        if not self.value:
+            self.value = value
+            return
+        #value is less than current node and no left subtree exists
+        #initiate a left subtree with value
+        elif value < self.value and not self.left:
+            self.left = BinarySearchTree(value)
+        #value is less than current node and left subtree exists
+        #run insert on the left subtree
+        elif value < self.value and self.left:
+            self.left.insert(value)
+        #value is greater than current node and no right subtree exists
+        #initiate a right subtree with value
+        elif value > self.value and not self.right:
+            self.right = BinarySearchTree(value)
+        #value is greater than current node and right subtree exists
+        #run insert on the right subtree
+        elif value > self.value and self.right:
+            self.right.insert(value)
+
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        # compare value to the current node value
+        # if smaller, go left
+        # if bigger, go right
+        # repeat, if neccessary -> recursion
+        # if equal, return True!
+
+        # if smaller, but we cant go left, return false
+        # if bigger, but we cant go right, return false
         pass
 
     # Return the maximum value found in the tree
