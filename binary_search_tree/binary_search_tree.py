@@ -37,7 +37,7 @@ class BinarySearchTree:
             self.left.insert(value)
         #value is greater than current node and no right subtree exists
         #initiate a right subtree with value
-        elif value > self.value and not self.right:
+        elif value >= self.value and not self.right:
             self.right = BinarySearchTree(value)
         #value is greater than current node and right subtree exists
         #run insert on the right subtree
@@ -48,6 +48,17 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        if target == self.value:
+            return True
+
+        if target < self.value:
+            if self.left is None:
+                return False
+            return self.left.contains(target)
+        if target > self.value:
+            if self.right is None:
+                return False
+            return self.right.contains(target)
         # compare value to the current node value
         # if smaller, go left
         # if bigger, go right
@@ -56,16 +67,27 @@ class BinarySearchTree:
 
         # if smaller, but we cant go left, return false
         # if bigger, but we cant go right, return false
-        pass
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # all the way to the right
+        # if there's nowhere to go -> we hit the base case (max value)
+        if self.right is None:
+            return self.value
+        # if there is a way to the right
+        return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        # when there's nowhere to go, just call the node itself -> base case
+        cb(self.value)
+        # if we can go left
+        if self.left is not None:
+            self.left.for_each(cb)
+        # if we can go right
+        if self.right is not None:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
