@@ -13,15 +13,14 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
+        ## sudo code from the lecture:
         # compare value to the current node
         # if smaller, go left
         # if bigger, go right
         # repeat, if neccessary -> recursion?
-
         # if no node to go to, (either left or right) (i.e, left or right is None) -> base case
         # make the new node at that spot
-
-        ## if no node.left AND value is less than node.value OR no node.right and value greater than node.value
+        # if no node.left AND value is less than node.value OR no node.right and value greater than node.value
 
         #current node has no value
         if not self.value:
@@ -48,17 +47,24 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        #check if current node is the target value
         if target == self.value:
             return True
 
+        #target is less than current node and left subtree exists
         if target < self.value:
             if self.left is None:
+                #target value does not equal current node value and no subtree exists
                 return False
             return self.left.contains(target)
+        #target is greater than current node and rigth subtree exists
         if target > self.value:
             if self.right is None:
+                #target value does not equal current node value and no subtree exists
                 return False
             return self.right.contains(target)
+        
+        ## sudo code from the lecture:
         # compare value to the current node value
         # if smaller, go left
         # if bigger, go right
